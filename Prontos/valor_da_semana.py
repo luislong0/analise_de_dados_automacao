@@ -19,8 +19,9 @@ print(tabela)
 
 #variaveis
 id = int(input('Digite o numero da semana: '))
-id2 = int(input('Digite o numero da outra semana: '))
 mes = str(input("Digite o mês: "))
+id2 = int(input('Digite o numero da outra semana: '))
+mes2 = str(input("Digite o mês: "))
 
 #Filtrando Valores da semana digitada
 
@@ -35,7 +36,7 @@ print(tabela2)
 
 #Filtrando Valores da segunda semana digitada
 #filtrando o mes
-order2 = tabela["Mes"] == mes
+order2 = tabela["Mes"] == mes2
 df2 = tabela[order2]
 #filtrando a semana
 filtro2 = df2["Semana"] == id2
@@ -49,6 +50,13 @@ tabelames = tabela2[filtromes]
 #Fazendo com que a variavel vira uma string
 tabelames = (tabelames.iloc[0]["Mes"])
 print(tabelames)
+
+#pegar o valor o mes 2
+filtromes2 = tabela3["Mes"] == mes2
+tabelames2 = tabela3[filtromes2]
+#Fazendo com que a variavel vira uma string
+tabelames2 = (tabelames2.iloc[0]["Mes"])
+print(tabelames2)
 
 #Os valores vendidos (usei o max pois so tem um valor no filtro e ele vira um numero float no final)
 valor_vendido = tabela2["Total"].max()
@@ -66,7 +74,7 @@ texto = f"""
 Ola!!!
 
 O total de vendas da semana {id} de {tabelames} foi de: R$ {valor_vendido:,.2f}
-O total de vendas da semana {id2} de {tabelames} foi de: R$ {valor_vendido2:,.2f}
+O total de vendas da semana {id2} de {tabelames2} foi de: R$ {valor_vendido2:,.2f}
 Porcentagem de venda das duas semanas foram: {porcentagem:,.1f}%
 abs: dia: {nova_data}
 
