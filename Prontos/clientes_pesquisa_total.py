@@ -32,13 +32,26 @@ nome_exibir = (tabelanome.iloc[0]["Nome"])
 print(nome_exibir)
 
 #Pegando o valor total de compras do cliente
+#pegando o valor total pago do cliente
+#pegando o quanto ele deve
 valortotal = tabela2["Valor Total"].sum()
+valor_pago = tabela2["Quantidade Paga"].sum()
+devendo = valortotal - valor_pago
+
+if (devendo < 0):
+    devendo = 0
+
 print(valortotal)
+print(valor_pago)
+print(devendo)
 
 #Texto para ser enviado
 texto = f"""
 Ola!!!
 O total de compras de {nome_exibir} foi de: R$ {valortotal:,.2f}
+O total pago de {nome_exibir} foi de: R$ {valor_pago:,.2f}
+O total que o (a) deve é de: R${devendo:.2f}
+
 abs: dia da consulta: {nova_data}
 
 by: Luis Otavio Longo Pereira
